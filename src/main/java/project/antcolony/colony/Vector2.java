@@ -35,5 +35,6 @@ public class Vector2 {
 		this.x *= s;
 		this.y *= s;
 	}
+	//Test 
 	
 }
