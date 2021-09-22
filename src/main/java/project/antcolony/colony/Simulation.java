@@ -1,19 +1,26 @@
 package project.antcolony.colony;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Simulation {
 
-	private static final long UPDATE_PERIOD = 1000 / 2;
+	private static final long UPDATE_PERIOD = 1000 / 30;
 
 	private SimulationUI ui;
 
 	private Timer timer;
 	private int count;
 
+	private List<Colony> colonies;
+
 	public Simulation() {
 		ui = new SimulationUI();
+		this.colonies = new ArrayList<Colony>();
+		colonies.add(new Colony(new Vector2(200, 200), 20));
+		colonies.get(0).spawnAnt();
 	}
 
 	public void start() {
@@ -48,7 +55,15 @@ public class Simulation {
 	private void updateSimulation() {
 		// System.out.println(count + " | updating simulation...");
 		count++;
-		ui.updateUI();
+		updateGameboardObjects();
+		ui.updateUI(colonies);
+	}
+
+	private void updateGameboardObjects() {
+		for (Colony c : colonies) {
+			c.updatePosition();
+		}
+
 	}
 
 	public SimulationUI getSimulationUI() {
