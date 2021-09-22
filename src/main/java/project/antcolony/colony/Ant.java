@@ -11,7 +11,7 @@ public class Ant {
         this.size = size;
     }
 
-    private void updatePostition() {
+    private void updatePosition() {
         position.addTo(velocity);
     }
 }
