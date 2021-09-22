@@ -1,5 +1,5 @@
-# antcolony
+# Ancolony
 A little simulation of an ant colony.
-## idea
+## Idea
 ### 1
 ### 2
